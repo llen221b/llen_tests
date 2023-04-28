@@ -5,3 +5,4 @@ def is_acceptable_password(password: str) -> bool:
         return False
 
 print(is_acceptable_password("short"))
+
