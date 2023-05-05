@@ -1,8 +1,8 @@
 def is_acceptable_password(password: str) -> bool:
-    if len(password) > 6:
-        return True
-    else:
-        return False
+    cond1 = len(password) >= 6
+    cond2 = any(map(str.isdigit, password))
+
+    return all([cond1, cond2])
 
 print(is_acceptable_password("short"))
 
