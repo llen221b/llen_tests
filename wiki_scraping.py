@@ -32,6 +32,7 @@ for div in div_notes:
 note_urls = [urljoin(base_site, l.get('href') )for l in div_links]
 print(note_urls)
 
+#get all the text of these articles and put it in dictionary
 par_text = []
 
 i = 0
