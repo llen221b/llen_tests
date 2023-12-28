@@ -31,3 +31,29 @@ for div in div_notes:
         div_links.append(a)
 note_urls = [urljoin(base_site, l.get('href') )for l in div_links]
 print(note_urls)
+
+par_text = []
+
+i = 0
+for url in note_urls:
+
+    note_resp = requests.get(url)
+
+    if note_resp.status_code == 200:
+        print('URL #{0}: {1}'.format(i+1, url))
+    else:
+        print('Status code {0}: Skipping URL #{1}: {2}'.format(note_resp.status_code, i+1,url))
+        i = i+1
+        continue
+
+    note_html = note_resp.content
+    note_soup = BeautifulSoup(note_html, 'lxml')
+    note_pars = note_soup.find_all('p')
+    text = [p.text for p in note_pars]
+    par_text.append(text)
+    i = i+1
+
+page_text = [''.join(text) for text in par_text]
+
+url_to_text = dict(zip(note_urls, page_text))
+print(url_to_text['https://en.wikipedia.org/wiki/Index_of_music_articles'])
