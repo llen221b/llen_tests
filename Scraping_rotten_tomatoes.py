@@ -34,3 +34,15 @@ print(years)
 #extract score
 scores = [heading.find('span', class_ = 'tMeterScore').string for heading in headings]
 print(scores)
+
+#extract critics consensus
+consensus = [div.find('div', {'class': 'info critics-consensus'}) for div in divs]
+common_phrase = 'Critics Consensus:'
+common_len = len(common_phrase)
+consensus_text = [con.text[common_len:] if con.text.startswith(common_phrase) else con.text for con in consensus]
+print(consensus_text)
+
+#extract directors
+directors = [div.find('div', class_ = 'director') for div in divs]
+dir = [director.find('a').string for director in directors]
+print(dir)
