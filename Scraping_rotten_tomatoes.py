@@ -46,3 +46,16 @@ print(consensus_text)
 directors = [div.find('div', class_ = 'director') for div in divs]
 dir = [director.find('a').string for director in directors]
 print(dir)
+
+#extract cast info
+cast_info = [div.find('div', class_ = 'cast') for div in divs]
+cast = []
+for c in cast_info:
+    cast_links = c.find_all('a')
+    cast_names = [link.string for link in cast_links]
+    cast1 = ','.join(cast_names)
+    result = cast.append(cast1)
+print(result)
+
+
+print(cast_names)
