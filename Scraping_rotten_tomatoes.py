@@ -31,4 +31,6 @@ years = [year.strip('()') for year in years]
 years = [int(year) for year in years]
 print(years)
 
-
+#extract score
+scores = [heading.find('span', class_ = 'tMeterScore').string for heading in headings]
+print(scores)
