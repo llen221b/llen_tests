@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import pandas as pd
 
 base_site = 'https://editorial.rottentomatoes.com/guide/inspiring-movies/'
 
@@ -56,6 +57,17 @@ for c in cast_info:
     cast1 = ','.join(cast_names)
     result = cast.append(cast1)
 print(result)
-
-
 print(cast_names)
+
+movies_info = pd.DataFrame()
+movies_info["Movie Title"] = movie_names
+movies_info["Year"] = years
+movies_info["Score"] = scores
+movies_info["Director"] = dir
+movies_info['Cast'] = cast_names
+movies_info['Consensus'] = consensus_text
+
+print(movies_info)
+
+movies_info.to_csv('movies_info.csv', index = False, header=True)
+movies_info.to_excel('movies_info.xlsx', index = False, header = True)
