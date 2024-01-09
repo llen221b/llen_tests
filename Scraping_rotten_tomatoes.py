@@ -51,20 +51,22 @@ print(dir)
 #extract cast info
 cast_info = [div.find('div', class_ = 'cast') for div in divs]
 cast = []
-for c in cast_info:
-    cast_links = c.find_all('a')
-    cast_names = [link.string for link in cast_links]
-    cast1 = ','.join(cast_names)
-    result = cast.append(cast1)
-print(result)
-print(cast_names)
+# for c in cast_info:
+#     cast_links = c.find_all('a')
+#     cast_names = [link.string for link in cast_links]
+#     result = ', '.join(cast_names)
+#     result = cast.append(result)
+
+cast = [', '.join([link.string for link in c.find_all('a')]) for c in cast_info]
+
+print(cast)
 
 movies_info = pd.DataFrame()
 movies_info["Movie Title"] = movie_names
 movies_info["Year"] = years
 movies_info["Score"] = scores
 movies_info["Director"] = dir
-movies_info['Cast'] = cast_names
+movies_info['Cast'] = cast
 movies_info['Consensus'] = consensus_text
 
 print(movies_info)
