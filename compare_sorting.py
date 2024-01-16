@@ -1,6 +1,14 @@
 import timeit
 import random
 
+# Prosimy użytkownika o podanie rozmiarów danych. Wartości testowane to [100, 500, 1000, 5000]
+sizes = input("Proszę podać rozmiary danych: \n")
+sizes = list(map(int, sizes.split()))
+
+#Prosimy o podanie stopnia posortowania danych w procentach. Wartości testowane to [0, 25, 50, 100]
+sorting_percentages = input("Proszę podać procentową wartość posortowania danych: \n")
+sorting_percentages = list(map(int, sorting_percentages.split()))
+
 def compare_sorting_algorithms(algorithm1, algorithm2, sizes, sorting_percentages):
     for size in sizes:
         for percentage in sorting_percentages:
@@ -31,8 +39,8 @@ def merge_sort(data):
     return sorted(data)
 
 # Przykładowe wartości
-sizes = [100, 500, 1000, 5000]
-sorting_percentages = [0, 25, 50, 100]
+# sizes = [100, 500, 1000, 5000]
+# sorting_percentages = [0, 25, 50, 100]
 
 compare_sorting_algorithms(quick_sort, merge_sort, sizes, sorting_percentages)
 
