@@ -1,4 +1,4 @@
-nlist = input('Proszę podać ciąg liczb naturalnych \n')
+nlist = input('Proszę podać ciąg losowych liczb naturalnych \n')
 nlist1 = list(map(int, nlist.split()))
 
 def bubbleSort(nlist1):
